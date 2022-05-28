@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <title>Title</title>
+    <style>
+        body{
+
+        background-image : url("wallpapers/wallpaper_1.jpg");
+        background-color : #d3d3d3;
+        text-align : center;
+        }
+        h3{
+        color : #008000;
+        }
+        #marking{
+        margin: 200px;
+        }
+        .upload{
+        display:inline-block;
+        margin: 10px;
+        background-color: #ffe4c4;
+        height: 100px;
+        width: 400px;
+        padding: 60px;
+        border: 2px solid black;
+        -webkit-border-radius: 15px ;
+        }
+        h2{
+        color: #fff;
+        }
+
+
+    </style>
+
+</head>
+<body >
+    <h1 >Attendance Project</h1>
+    <div class="upload">
+        <h2>
+            Add New Student
+        </h2>
+        <h3>
+            {{msg}}
+        </h3>
+        <br>
+       <form action="/Upload" method="post" enctype="multipart/form-data" >
+         <input class="form-control" type="file" name="file-name" multiple>
+        <input class="btn btn-primary mt-3"type="submit" value="upload image">
+    </form>
+    </div>
+
+    <div id="marking">
+        {% if check %}
+        <h3> The Attendance of {{check}} is recorded</h3>
+        {% endif %}
+        <div class="container">
+        <form class="p-3 text-center" action="/detection" ,method="post" enctype="multipart/form-data">
+        <input class="btn btn-primary mt-3"type="submit" value="mark attendance">
+    </form>
+
+    </div>
+    </div>
+    <form action="/show_data" >
+        <input type="submit" value="Show CSV" />
+    </form>
+    {{ data }}
+
+
+
+</body>
+</html>
